@@ -24,12 +24,6 @@ const coinHeading={
     borderBottom: '1px solid',
     padding: '1rem 0',
 }
-const statsContainer={
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    gap:'2rem',
-}
 
 const CryptoDetails = () => {
   const { coinId } = useParams();
@@ -68,9 +62,9 @@ const CryptoDetails = () => {
                 {time.map((date) => <Option key={date}>{date}</Option>)}
             </Select>
             <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name} />
-            <Col style={statsContainer}>
-                <Col className="coin-value-statistics">
-                    <Col className="coin-value-statistics-heading">
+            <Row gutter={[32,32]} className="crypto-details">
+                <Col sm={24} lg={12}>
+                    <Col >
                         <Title level={3} className="coin-details-heading">{cryptoDetails.name} Value Statistics</Title>
                         <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
                     </Col>
@@ -84,8 +78,8 @@ const CryptoDetails = () => {
                         </Col>
                     ))}
                 </Col>
-                <Col className="other-stats-info">
-                    <Col className="coin-value-statistics-heading">
+                <Col sm={24} lg={12}>
+                    <Col >
                         <Title level={3} className="coin-details-heading">Other Stats Info</Title>
                         <p>An overview showing the statistics of {cryptoDetails.name}, such as the base and quote currency, the rank, and trading volume.</p>
                     </Col>
@@ -99,22 +93,22 @@ const CryptoDetails = () => {
                         </Col>
                     ))}
                 </Col>
-            </Col>
-            <Col className="coin-desc-link">
-                <Row className="coin-desc">
+            </Row>
+            <Row gutter={[32,32]} className="crypto-details">
+                <Col sm={24} lg={12}>
                     <Title level={3} className="coin-details-heading">What is {cryptoDetails.name}?</Title>
                     {HTMLReactParser(cryptoDetails.description)}
-                </Row>
-                <Col className="coin-links">
+                </Col>
+                <Col sm={24} lg={12}>
                     <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
                     {cryptoDetails.links?.map((link) => (
-                        <Row className="coin-link" key={link.name}>
+                        <Col className="coin-stats" key={link.name}>
                             <Title level={5} className="link-name">{link.type}</Title>
                             <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
-                        </Row>
+                        </Col>
                     ))}
                 </Col>
-            </Col>
+            </Row>
         </Col>
     </div>
     )
