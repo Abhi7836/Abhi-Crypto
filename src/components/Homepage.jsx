@@ -26,13 +26,12 @@ const csstitle={
 const Homepage = () => {
     const {data, isFetching}= useGetCryptosQuery(10);
     const globalStats=data?.data?.stats;
-    console.log(process.env.REACT_APP_RAPID_KEY);
+    console.log("1",globalStats);
     if(isFetching) return <Spin />;
-
     return (
         <div>
         <div style={cssstats}>
-            {process.env.REACT_APP_RAPID_KEY}
+            {/*process.env.REACT_APP_RAPID_KEY*/}
             <Title level={1} className="heading">Global Crypto Stats</Title>
             <Row gutter={[32, 32]}>
                 <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
@@ -41,7 +40,7 @@ const Homepage = () => {
                 <Col span={12}><Statistic title="Total 24h Volume" value={`$${millify(globalStats.total24hVolume)}`} /></Col>
                 <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.total} /></Col>
                 <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)} /></Col>
-            </Row>
+    </Row>
         </div>
         <div style={csstitle}>
             <div className="csstitle" style={{display:'flex',justifyContent:'space-between',alignItems:'baseline'}}>
