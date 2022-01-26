@@ -5,7 +5,7 @@ const baseUrl='https://bing-news-search1.p.rapidapi.com';
 const cryptoNewsHeaders = {
     'x-bingapis-sdk': 'true',
     'x-rapidapi-host': 'bing-news-search1.p.rapidapi.com',
-    'x-rapidapi-key': 'a772e9c974msha27218e7285a4f3p1368c7jsnf2fbbc03f845',
+    'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY,
 }
 const createRequest = (url) => ({ url, headers: cryptoNewsHeaders });
 
